@@ -13,7 +13,7 @@
 
 using namespace std;
 
-struct tree
+struct tree // Структура узла дерева
 {
     int inf;
     tree* right;
@@ -21,7 +21,7 @@ struct tree
     tree* parent;
 };
 
-tree *node(int x){
+tree *node(int x){ // Функция создания нового узла
     tree *n = new tree;
     n->inf = x;
     n->left = n->right = NULL;
@@ -29,7 +29,7 @@ tree *node(int x){
     return n;
 }
 
-void insert(tree *&tr, int x){
+void insert(tree *&tr, int x){ // Функция вставки в бинарное дерево поиска (BST)
     tree *n = node(x);
     if (!tr){
         tr = n;
@@ -60,7 +60,7 @@ void insert(tree *&tr, int x){
 }
 
 
-void print_even_leaves(tree *tr, bool &found){
+void print_even_leaves(tree *tr, bool &found){ // Функция вывода всех чётных листьев
     if (!tr){
         return;
     }

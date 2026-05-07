@@ -14,7 +14,7 @@
 
 using namespace std;
 
-struct tree
+struct tree // Структура узла дерева
 {
     int inf;
     tree* right;
@@ -22,7 +22,7 @@ struct tree
     tree* parent;
 };
 
-tree *node(int x){
+tree *node(int x){ // Функция создания нового узла
     tree *n = new tree;
     n->inf = x;
     n->left = n->right = NULL;
@@ -30,7 +30,7 @@ tree *node(int x){
     return n;
 }
 
-void insert(tree *&tr, int x){
+void insert(tree *&tr, int x){ // Функция вставки элемента в дерево
     tree *n = node(x);
     if (!tr){
         tr = n;
@@ -60,7 +60,7 @@ void insert(tree *&tr, int x){
     }
 }
 
-int find_depth(tree *tr, int x, int cnt = 0){
+int find_depth(tree *tr, int x, int cnt = 0){ // Функция поиска глубины узла
     if (!tr){
         return 0;
     }
@@ -96,7 +96,6 @@ int main(){
 
     int cnt = find_depth(tr, x);
     if (cnt != 0){
-        cout << "Узел найден" << endl;
         cout << "Глубина узла: " << cnt << endl;
     } else {
         cout << "Узел не найден" << endl;

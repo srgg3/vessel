@@ -14,7 +14,7 @@
 
 using namespace std;
 
-struct tree
+struct tree // Структура узла дерева
 {
     int inf;
     tree* right;
@@ -22,7 +22,7 @@ struct tree
     tree* parent;
 };
 
-tree *node(int x){
+tree *node(int x){ // Создание нового узла
     tree *n = new tree;
     n->inf = x;
     n->left = n->right = NULL;
@@ -30,7 +30,7 @@ tree *node(int x){
     return n;
 }
 
-void insert(tree *&tr, int x){
+void insert(tree *&tr, int x){ // Вставка элемента
     tree *n = node(x);
     if (!tr){
         tr = n;
@@ -58,7 +58,7 @@ void insert(tree *&tr, int x){
     }
 }
 
-void collect_leaves(tree *tr, vector<tree*> &leaves){
+void collect_leaves(tree *tr, vector<tree*> &leaves){ // Сбор всех листьев дерева
     if (!tr) {
         return;
     }
@@ -70,7 +70,7 @@ void collect_leaves(tree *tr, vector<tree*> &leaves){
     collect_leaves(tr->right, leaves);
 }
 
-tree *find_node(tree *tr, int x){
+tree *find_node(tree *tr, int x){ // Поиск узла по значению
     if (!tr || tr->inf == x){
         return tr;
     }
@@ -80,7 +80,7 @@ tree *find_node(tree *tr, int x){
     return find_node(tr->right, x);
 }
 
-tree *find_min(tree *tr){
+tree *find_min(tree *tr){ // Поиск минимального элемента
     if (!tr){
         return NULL;
     }
@@ -90,7 +90,7 @@ tree *find_min(tree *tr){
     return tr;
 }
 
-void delete_node(tree *&root, tree *v) {
+void delete_node(tree *&root, tree *v){ // Удаление узла из дерева
     if (!v){
         return;
     }
@@ -131,7 +131,7 @@ void delete_node(tree *&root, tree *v) {
     delete_node(root, succ);
 }
 
-void inorder(tree *tr){
+void inorder(tree *tr){ // Симметричный обход
     if (tr){
         inorder(tr->left);
         cout << tr->inf << " ";
