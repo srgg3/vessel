@@ -5,11 +5,13 @@
 
 using namespace std;
 
-void dfs(int v, vector<vector<int>> a, vector<bool> visited) {
+void dfs(int v, vector<vector<int>> a, vector<bool> &visited) {
     visited[v] = true;
-    for (int n : a[v]) {
-        if (!visited[n]) {
-            dfs(n, a, visited);
+    if (!a[v].empty()){
+        for (int n : a[v]) {
+            if (!visited[n]) {
+                dfs(n, a, visited);
+            }
         }
     }
 }

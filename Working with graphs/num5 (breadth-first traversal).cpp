@@ -70,7 +70,8 @@ int main() {
     cout << "Введите кол-во ребер m = ";
     cin >> m;
 
-    vector<vector<int>> graph(n);
+    vector<vector<int>> graph;
+    graph.resize(n);
     for (int i = 0; i < m; i++){
         int u, v;
         cin >> u >> v;
